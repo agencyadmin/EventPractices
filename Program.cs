@@ -14,6 +14,7 @@ namespace EventPractices
         {
             NumberReader numberReader = new NumberReader();
             numberReader.NumberEnteredEvent += ShowNumber;
+            numberReader.NumberEnteredEvent += MakeArray;
 
             while (true)
             {
@@ -59,6 +60,8 @@ namespace EventPractices
                     Console.WriteLine($"Сработало системное исключение: {ex.GetType}, {ex.Message}, {ex.StackTrace}, {ex.Message}");
 
                 }
+
+              
             }
             static void ShowNumber(int number)
             {
@@ -67,6 +70,22 @@ namespace EventPractices
                     case 1: Console.WriteLine("Введено значение 1"); break;
                     case 2: Console.WriteLine("Введено значение 2"); break;
                 }
+
+            }
+
+            static void MakeArray(int number)
+            { 
+                string[] SurNames =  { "Иванов", "Петров", "Сидоров", "Полянина", "Сидоров" };
+
+                switch (number)
+                {
+                    case 1: Array.Sort(SurNames);
+                        break;
+                    case 2: Array.Reverse(SurNames);
+                        break;
+                }
+                foreach (string s in SurNames) Console.WriteLine(s);
+
 
             }
 
